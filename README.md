@@ -1,5 +1,5 @@
 
-# UWC ISAK Computer Science 2022
+# UWC ISAK Computer Science 2023
 ![](src/typing.gif)
 
 Welcome! 
