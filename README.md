@@ -12,15 +12,16 @@ In a concise way:
 
 "Computational thinking represents a universally applicable attitude and skill set everyone, not just computer scientists, would be eager to learn and use."  [(Wing, Jeanette M. 2006)](https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf)
 
-Last year in G11 we explored three different projects including the creation of a car rental application, an interplanetary communication system, and a peer-to-peer software development. Using these projects we explored in a non linear way the [syllabus of CS](syllabus.md). See some results from these projects here:
+## Work from past classes
 
-1. [Video Unit 3 report by Alex Nygaard:](https://www.youtube.com/watch?v=jgiC-1BM9TQ)
-1. Unit 3: Creating a Graphical User Interface for a real client with Python. [Github repository by Lydia Etherington](https://github.com/lyds-jane/unit3)
-![](src/Lydia.png)
+Over the past years, we have explored many fun and applied projects in CS, that allow student to experience the life of a computer scientist (code developer, database engineer, front end developer, data scientist, software engineer) including the creation of a car rental application, a digital wallet for a cryptocurrency, an interplanetary communication system, a weather system, or a social network. Using these projects we explored in a non linear way the [syllabus of CS](syllabus.md) an develop your computational thinking skills. See some results from these projects here:
+
+1. [Video Unit 3 report by Loogmai Buree:](https://drive.google.com/file/d/1FJm4ciNcKgMrCt8ggz8lWzP13mh2iuJ8/view?usp=sharing) Winner of the Best Design Award 2022 for skillfully developing a contemporary desktop application using Python and SQL databases, designed for the management of a smart fridge. [Github repository by Loogmai Buree](https://github.com/loogmaii/Unit_3/tree/main/Projects)
+![](https://user-images.githubusercontent.com/111941936/224336254-92cd8dba-54bf-462d-a931-bde6d26a627e.png)
 1. Unit 2: An inter planetary communication system with Modern C and Arduino. [Github repository by Alex Nygaard](https://github.com/Alex-Nygaard/martianUnit2Project)  
 ![](src/Alex.jpg)
-1. Uni 1: A car rental application in BASH programming. [Github repository by Lauricenia Buque](https://github.com/comsci-uwc-isak/unit-1-project-Lauricenia) 
-![](src/lauricenia.png)
+1. Uni 1: A digital wallet [Github repository by Alessandro Salvetti].(https://github.com/Alsa2/g1/tree/47703311d226b51a61b8d2b3ae29d9b98f1366d5) 
+![](https://github.com/Alsa2/g1/blob/47703311d226b51a61b8d2b3ae29d9b98f1366d5/Images/bitcoin.gif)
 
 # 1. 🔥 How to succeed in this course
 ![](src/Study.gif)
@@ -135,12 +136,8 @@ The other tool we will use all the time is [GitHub](github.com). GitHub is a pro
 1. Send me a **nice** email with the link to your repository.
 ![](src/linkRepo.png)
 
-## Snakify
-[Snakify](https://snakify.org/en/) is an excellent tool online where you can develop your programming skills. In the length of G11 you will solve about 200 programming exercises on this website. I will be able to track your progress and give your feedback in this website.
-
-1. Create a free account as a Student.
-1. Add me as a teacher with the email address: ruben.pinzon@uwcisak.jp
-
+## Exercisim
+[Exercism](https://exercism.org/tracks/python) is a website where you can practice and learn computer programming. They give you little projects to work on that help you get better at writing code. Use the syllabus in Python to start practicing and developing your skills. Share with me your progress. 
 
 # 5.🧐 Resources
 
