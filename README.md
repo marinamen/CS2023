@@ -69,7 +69,7 @@ The topics that must be studied, including some practical work, are:
 
 # 3. 💪 The Assessment
 
-The assessment of the IB Computer Science course is detailed in **Table 1**. In our classroom we will use the rubric for CS IA (**Table 2**) to assess the projects proposed for each unit during the year. In addition we will have a combination of ①　mock papers, ②　quizzes, and ③　programming assignments to obtain a proper sample of your growth. The Predicted Grade (PG) is derived from all these components. 
+The assessment of the IB Computer Science course is detailed in **Table 1**. This is how the IB is graded. However, in our class we do much more and care about more things that show your learning
 
 **Table 1.** Description of the assessment components for SL and HL
 
@@ -79,6 +79,20 @@ The assessment of the IB Computer Science course is detailed in **Table 1**. In 
 | Paper 2: Option (1 h)                   | 25%          | 20%          |
 | Paper 3: Case Study (1 h)               | -            | 20%          |
 | Internal Assessment (IA): (30 h)        | 30%          | 20%          |
+
+
+We have 4 projects in Year 1, 1 exam at the end of G11, one exam in G12, quizzes (100 quizzes challenge), and few homework weighted as follows (**Table2**):
+
+**Table 2.** Description of the assessment components for CS at UWC ISAK Japan
+
+| Assessment Component                    | Weighting SL | 
+|-----------------------------------------|--------------|
+| Projects                                | 40%          |
+| Exams                                   | 30%          |
+| Quizzes                                 | 20%          |
+| Homework                                | 10%          |
+
+The Predicted Grade (PG) is derived from all these components.  
 
 Paper 1 includes a combination of short answer questions testing mainly knowledge, understanding, and application of concepts or tools from Topic 1 to 4 (SL) and Topic 1 to 7 for (HL). It also includes structured questions that required extended writing or solutions.
 
@@ -90,9 +104,9 @@ Paper 2 is the option from the syllabus among:
 
 [See one example of a past paper here.](specimenPapers.pdf)
 
-The Internal Assessment (IA) is your opportunity of developing a software application for a real client on a topic of your interest. The rubric for this component (**Table 2**) includes 5 parts:
+The Internal Assessment (IA) is your opportunity of developing a software application for a real client on a topic of your interest. The rubric for this component (**Table 3**) includes 5 parts:
 
-**Table 2.** Rubric for the CS IA
+**Table 3.** Rubric for the CS IA
 
 | Assessment Component                          | Marks        | 
 |-----------------------------------------------|--------------|
