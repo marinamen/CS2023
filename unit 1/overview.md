@@ -2,11 +2,17 @@
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
-![gif](https://github.com/marinamen/CS2023/assets/142757957/f3867e89-f088-41ac-8627-998d3189557c)
+
+![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/78e154025781802198e0401faa508d9a.gif)
+
+‧˚₊⋅ ୨୧ ⋅₊˚‧
+
+A digital Wallet by Marina Mendieta
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
 # Criteria A: Planning  　
+![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/734807779ad6cc5b0620359f950d2ff1.gif)
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧ 　 　　 　　　　 　
 
@@ -73,6 +79,7 @@ Justify the tools/structure of your solution
 ✩࿐  ⊹˚. ♡
 
 # Criteria B: Design
+![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/8ce4bbed258c2b5d02589fd35e38b3b6.gif)
 
 ## System Diagram
 
@@ -87,22 +94,146 @@ Justify the tools/structure of your solution
 | 2       | Create a login System | To have a flow diagram and the code for the login system                                 | 30 min        | Sep 14                 | B, C      |
 
 # Criteria C: Development
+![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/gif%201.gif)
 
-## Login System
-My client requires a system to protect the private data. I thought about using a login system to accomplish this requirement using a if condition and the open command to work with a csv file. 
+## Login System 
+‧˚₊⋅ ୨୧ ⋅₊˚‧
 
-AS you can sere in the flow diagram in **Fig 1**, In th first line I am defining a function called try_login, this function has two inputs of type string, and the output is a boolean representing True if the
-user logins correctly or false otherwise. This is saved in the variable success. Then in line two...this is your work.
+Sato san requested a register and login feauture, so I delivered using the below:
+
+୨ৎ Functions for both Register and Login.
+
+୨ৎ An option in case the password was forgotten that validates the User's identity through 2 securiy questions.
+
+୨ৎ Pleasing Visuals to make the System more aesthetic.
+
+୨ৎ Keypress feature , instead of using inputs I imported the keyboard library which inmediately detects keypress to ease the proccess.
+
+To prevent errors in the keypress system I used
 ```.py
-def try_login(name:str, password:str)->bool:
-    with open('user.csv',mode='r') as f:
-        data = f.readlines()
+keyboard.read_event(suppress=True)
+```
+The above function waits for a keypress event and suppresses it to prevent the default behaviour when a key is pressed in other applications or if its used in other moments throughout the program.
 
-    success = False
-    for line in data:
-        uname = line.split(',')[0]
-        upass = line.split(',')[1].strip() #strip() removes \n
-        if uname == name and upass == password:
-            success = True
-            break
-    return success
+I stored all of the users information in a separate csv file called *data.txt*, it stored the data in the format *username, password, security1, security2*. 
+It was read using the open function in three different ways **a** which appends the users data during registration, **r** which reads and authenticates the validity of the username and password, and finally **w** which writes and replaces the old password with the new one in the forgot password function.
+I also used the Time Library to add more interaction and realistic loading times into the wallet system.
+
+*The code is displayed below*
+
+
+‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧
+
+
+```.py
+
+#Login and register function + some used
+
+def menu():
+    print("\n ♯ menu ೀ :")
+    print("1. register")
+    print("2. login")
+
+def loading():
+    time.sleep(0.5)
+    print("⏳")
+    time.sleep(1)
+    print("⌛️")
+    time.sleep(0.5)
+
+
+
+def register(username, password):
+    with open('data.txt', 'a') as datafile:
+        datafile.write(f'{username}:{password}\n')
+
+def login(username, password):
+    with open('data.txt', 'r') as datafile:
+        lines = datafile.readlines()
+        for line in lines:
+            stored_user, stored_pass = line.strip().split(':')
+            if username == stored_user and password == stored_pass:
+                return True
+    return False
+
+#forgot password function uses two security questions to validate that the correct user forgot their password
+
+def forgot_password():
+    username = input("enter your username (to confirm your existence in our database): ")
+    found = False
+    
+    with open('data.txt', 'r') as datafile:
+        lines = datafile.readlines()
+        for line in lines:
+            stored_user, _, security1, security2 = line.strip().split(':')
+            if username == stored_user:
+                found = True
+                break
+
+    if found:
+        security1_answer = input(f"what year did/will you graduate school in:  ")
+        security2_answer = input(f"where were you raised: ")
+        
+        with open('data.txt', 'r') as datafile:
+            lines = datafile.readlines()
+            for line in lines:
+                stored_user, stored_pass, stored_security1, stored_security2 = line.strip().split(':')
+                if username == stored_user and security1_answer == stored_security1 and security2_answer == stored_security2:
+                    new_pass = input("enter a new password: ")
+                    print(f"please dont forget your password next time, your new password is{new_pass}")
+                    with open('data.txt', 'r') as datafile:
+                        all_lines = datafile.readlines()
+                    with open('data.txt', 'w') as datafile:
+                        for line in all_lines:
+                            if line.strip().split(':')[0] == username:
+                                datafile.write(f'{username}:{new_pass}:{security1}:{security2}\n')
+                            else:
+                                datafile.write(line)
+                    print("password reset successful!\n")
+                    break
+            else:
+                print("Security questions validation failed. Please try again.\n")
+    else:
+        print(f"(っ◞‸◟ c \n username not found. please try again.\n")
+
+#calling functions
+
+
+while True:
+    menu()
+    event = keyboard.read_event(suppress=True)
+
+    if event.event_type == keyboard.KEY_DOWN:
+            key = event.name.upper()
+    
+    if key == '1':
+        username = input("enter a username: ")
+        time.sleep(1)
+        password = input("enter a password: ")
+        loading()
+        security1 = input("what year did/will you graduate school in: ")
+        security2= input("where were you raised: ")
+        register(username, password, security1, security2)
+        loading()
+
+        
+        print("registration successful!\n")
+        print("˖ ࣪‧₊˚⋆✩٩(ˊᗜˋ*)و ✩")
+
+    elif key == '2':
+        username = input("enter your username: ")
+        time.sleep(1)
+        password = input("enter your password: ")
+        loading()
+        if login_user(username, password):
+            print(f"welcome, {username}!\n ( ´ ∀ ` )ﾉ ")
+        else:
+            print(f"󠀠 \n ( • - • ) ... \n󠀠 \n invalid username or password.")
+            forgotpass = input("forgot password? (yes/no): ").lower()
+            if forgotpass == 'yes':
+                forgot_password()
+```
+‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧
+
+    
+
