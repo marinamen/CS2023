@@ -380,4 +380,64 @@ else:
 
 ## Sort Transactions 
 
+⋆｡𖦹°⭒˚｡⋆
+
+An additional function I added to increase user functionality, was a method of sorting all of the transactions inputted.
+I sorted giving 3 options:
+⭒Date
+⭒Amount
+⭒Category
+
+And the additional 
+```.py     
+
+transactions.sort(key=key_function, reverse=reverse)
+
+```
+
+*The Code is Displayed Below*
+
+
+⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆
+
 ```.py 
+
+
+
+
+from datetime import datetime
+def sorter(sort1, reverse=False):
+    with open('transactions.txt', 'r') as transfile:
+        transactions = transfile.readlines()
+    
+    if sortin == 'date':
+        # Sort by transaction date.
+        def key_function(transaction):
+            date_str = transaction.split(',')[0]
+            return datetime.strptime(date_str, '%Y-%m-%d')
+    elif sortin == 'amount':
+        # Sort by transaction amount.
+        def key_function(transaction):
+            return float(transaction.split(',')[-1])
+    elif sortin == 'category':
+        # Sort by transaction category.
+        def key_function(transaction):
+            return transaction.split(',')[1].strip()
+    else:
+        # Default to sorting by date if an invalid option is provided.
+        print("(𖦹 _ 𖦹)... Error, sorting by date as default")
+        key_function = lambda x: datetime.strptime(x.split(':')[0], '%Y-%m-%d')
+
+    # Sort transactions based on the selected key, with an option to reverse the sorting order.
+    transactions.sort(key=key_function, reverse=reverse)
+    
+    # Print the sorted transactions.
+    print("\n ♯ Sorted Transactions by", sort.capitalize(), "ೀ :")
+    for t in transactions:
+        print(t.strip())
+
+sortin=input(f"How would you like to sort your transactions?\nCategory\nAmount\nDate").lower()
+sorter(sortin)
+```
+
+⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒
