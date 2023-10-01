@@ -7,7 +7,11 @@
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
+[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]
+
 A digital Wallet by Marina Mendieta
+
+[̲̅$̲̅(̲̅5̲̅0)̲̅$̲̅]
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
@@ -88,10 +92,16 @@ Justify the tools/structure of your solution
 **Fig. 1** This is the flow diagram for the login system
 
 ## Record of Tasks
-| Task No | Planned Action        | Planned Outcome                                                                          | Time estimate | Target completion date | Criterion |
-|---------|-----------------------|------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
-| 1       | Create system diagram | To have a clear idea of the hardware and software requirements for the proposed solution | 10min         | Sep 24                 | B         |
-| 2       | Create a login System | To have a flow diagram and the code for the login system                                 | 30 min        | Sep 14                 | B, C      |
+| Task No | Planned Action                                       | Planned Outcome                                                                                                   | Time estimate | Target completion date | Criterion |
+|---------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
+| 1       | Create system diagram                                | To have a clear idea of the hardware and software requirements for the proposed solution                          | 10min         | Sep 24                 | B         |
+| 2       | Create Basic Description for SOL                     | To have a text at the start of the initiation of the digital wallet, outlining a description of SOL               | 10 min        | Sep 26                 | C         |
+| 3       | Create a Login System                                | To have a functioning Login system that the user can use to secure the wallet                                     | 20min         | Sep 27                 | C         |
+| 4       | Test Login System and Add Registration System        | Tested Login and worked, decided to add a regiter user system so that the wallet can begin by creating an account | 20min         | Sep 27                 | C         |
+| 5       | Test Registration and Add Forgotten Password Feature | Registration and Login system functional, therefore decided to add a Forgotten Password option                    | 15min         | Sep 27                 | C         |
+| 6       | Create a login system flowchart                      | To create a flowchart that represents the program created                                                         | 5min          | Sep 27                 | B         |
+| 7       | Create a function that updates SOL realtime          | To update SOLs value and print it once every time the program is opened.                                          | 30min         | Sep 28                 | C         |
+| 8       | Test Realtime SOL                                    | Encountered a few errors, fixed them and now have a functioning SOL realtime value.                               | 10min         | Sep 28                 | C         |
 
 # Criteria C: Development
 ![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/gif%201.gif)
@@ -235,5 +245,37 @@ while True:
 ```
 ‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧
 
+
+## Cryptocurrency Realtime Value
     
+```.py
+
+import ccxt
+import time
+
+exname = 'binance'
+
+# Initialize the exchange instance
+exchange = getattr(ccxt, exname)()
+
+# Specify the symbol for SOL/USDT
+symbol = 'SOL/USDT'
+
+def getsolana():
+    try:
+        ticker = exchange.fetch_ticker(symbol)
+        return ticker['last']
+    except ccxt.NetworkError as e:
+        print(f"network error...: {e}")
+        return None
+    except ccxt.ExchangeError as e:
+        print(f"unexpected error!...: {e}")
+        return None
+
+solana_price = getsolana()
+if solana_price is not None:
+    print(f"SOL Current Value in Dollars: {solana_price}")
+    askcurrency = input("Would you like to know it in
+else:
+    print("Failed to fetch SOL/USDT price.")
 
