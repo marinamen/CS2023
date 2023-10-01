@@ -1,1 +1,189 @@
-ok
+import time
+print("imported time")
+import ccxt
+print("imported cxxt")
+import keyboard
+print("imported keyboard")
+
+
+def menu():
+    print("\n ♯ menu ೀ :")
+    print("1. Register")
+    print("2. Login")
+    print("3. Forgot Password")
+    print("4. Sort Transactions")
+
+def loading():
+    time.sleep(0.5)
+    print("⏳")
+    time.sleep(1)
+    print("⌛️")
+    time.sleep(0.5)
+
+def register(username, password):
+    with open('data.txt', 'a') as datafile:
+        datafile.write(f'{username}:{password}::0.0\n')
+
+def login(username, password):
+    with open('data.txt', 'r') as datafile:
+        lines = datafile.readlines()
+        for line in lines:
+            stored_user, stored_pass, _, _ = line.strip().split(':')
+            if username == stored_user and password == stored_pass:
+                return True
+    return False
+
+def show_balance(username):
+    with open('data.txt', 'r') as datafile:
+        lines = datafile.readlines()
+        for line in lines:
+            stored_user, stored_pass, _, balance = line.strip().split(':')
+            if username == stored_user:
+                return float(balance)
+    return None
+
+def deposit(username, amount):
+    with open('data.txt', 'r') as datafile:
+        all_lines = datafile.readlines()
+    
+    for i, line in enumerate(all_lines):
+        stored_user, stored_pass, _, balance = line.strip().split(':')
+        if username == stored_user:
+            new_balance = float(balance) + amount
+            all_lines[i] = f'{username}:{stored_pass}::{new_balance:.2f}\n'
+            break
+    
+    with open('data.txt', 'w') as datafile:
+        datafile.writelines(all_lines)
+
+def withdraw(username, amount):
+    with open('data.txt', 'r') as datafile:
+        all_lines = datafile.readlines()
+    
+    for i, line in enumerate(all_lines):
+        stored_user, stored_pass, _, balance = line.strip().split(':')
+        if username == stored_user:
+            if amount <= float(balance):
+                new_balance = float(balance) - amount
+                all_lines[i] = f'{username}:{stored_pass}::{new_balance:.2f}\n'
+                # Add the transaction to the transaction history
+                transaction_history = f"{username}: Withdraw: {amount} USD: {time.ctime()}"
+                with open('transactions.txt', 'a') as transfile:
+                    transfile.write(transaction_history + '\n')
+            else:
+                return False
+    
+    with open('data.txt', 'w') as datafile:
+        datafile.writelines(all_lines)
+    
+    return True
+
+def sort_transactions():
+    with open('transactions.txt', 'r') as transfile:
+        transactions = transfile.readlines()
+    transactions.sort(key=lambda x: x.split(':')[-1])
+    print("\n ♯ Sorted Transactions ೀ :")
+    for transaction in transactions:
+        print(transaction.strip())
+
+def forgot_password():
+    username = input("Enter your username (to confirm your existence in our database): ")
+    found = False
+    
+    with open('data.txt', 'r') as datafile:
+        lines = datafile.readlines()
+        for line in lines:
+            stored_user, _, security1, security2 = line.strip().split(':')
+            if username == stored_user:
+                found = True
+                break
+
+    if found:
+        security1_answer = input(f"What year did/will you graduate school in:  ")
+        security2_answer = input(f"Where were you raised: ")
+        
+        with open('data.txt', 'r') as datafile:
+            lines = datafile.readlines()
+            for i, line in enumerate(lines):
+                stored_user, stored_pass, stored_security1, stored_security2, _ = line.strip().split(':')
+                if (
+                    username == stored_user 
+                    and security1_answer == stored_security1 
+                    and security2_answer == stored_security2
+                ):
+                    new_pass = input("Enter a new password: ")
+                    print(f"Password reset successful! Your new password is: {new_pass}")
+                    lines[i] = f'{username}:{new_pass}:{security1}:{security2}::0.0\n'
+                    
+                    with open('data.txt', 'w') as datafile:
+                        datafile.writelines(lines)
+                    break
+            else:
+                print("Security questions validation failed. Please try again.\n")
+    else:
+        print("Username not found. Please try again.\n")
+
+def pretty_banner(text):
+    banner = f'''
+         ╭── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ──╮
+                {text}
+         ╰── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ──╯
+    '''
+    return banner
+
+while True:
+    text = "Welcome to your Digital Wallet!"
+    banner = pretty_banner(text)
+    print(banner)
+
+    menu()
+    choice = input("Select an option (1/2/3/4): ")
+
+    if choice == '1':
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        register(username, password)
+        print("Registration successful!\n")
+    elif choice == '2':
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        if login(username, password):
+            while True:
+                print("\nUser Menu:")
+                print("1. Deposit")
+                print("2. Withdraw")
+                print("3. Check Balance")
+                print("4. Sort Transactions")
+                print("5. Logout")
+                inner_choice = input("Select an option (1/2/3/4/5): ")
+                if inner_choice == '1':
+                    amount = float(input("Enter the deposit amount: "))
+                    deposit(username, amount)
+                    print(f"Deposited ${amount}. New balance: ${show_balance(username):.2f}")
+                elif inner_choice == '2':
+                    amount = float(input("Enter the withdrawal amount: "))
+                    if withdraw(username, amount):
+                        print(f"Withdrew ${amount}. New balance: ${show_balance(username):.2f}")
+                    else:
+                        print("Insufficient balance.")
+                elif inner_choice == '3':
+                    balance = show_balance(username)
+                    if balance is not None:
+                        print(f"Current balance: ${balance:.2f}")
+                    else:
+                        print("Error retrieving balance.")
+                elif inner_choice == '4':
+                    sort_transactions()
+                elif inner_choice == '5':
+                    print("Logging out.")
+                    break
+                else:
+                    print("Invalid choice. Please select a valid option (1/2/3/4/5).")
+        else:
+            print("Invalid login credentials. Please try again.\n")
+    elif choice == '3':
+        forgot_password()
+    elif choice == '4':
+        sort_transactions()
+    else:
+        print("Invalid choice. Please select a valid option (1/2/3/4).")
