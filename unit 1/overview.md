@@ -28,24 +28,21 @@ Apart for this requirements, Ms Sato is open to explore a cryptocurrency selecte
 
 ✩࿐  ⊹˚. ♡
 
-| Name   | Coin            |   | Name | Coin |
-|--------|-----------------|---|------|------|
-| Keeler | ETH             |   |      |      |
-| Rocky  | DOGE            |   |      |      |
-| Yuiko  | BNB(Binance)    |   |      |      |
-| Jan    | Tether (USDT)   |   |      |      |
-| Antoni | XRP(Ripple)     |   |      |      |
-| Victor | Cardano (ADA)   |   |      |      |
-| Manaha | LTC (LIte Coin) |   |      |      |
-| Marina | Solano (SOL)    |   |      |      |
-| May    | (DAI)           |   |      |      |
-| Ayane  | Zcash (ZEC)     |   |      |      |
-| Yosuke  | USD COIN  (USDC)  |   |      |      |
-| Naomi  |  TRX Tron       |   |      |      |
-| Amine  |  KLIMA          |   |      |      |
-
-| Dylan  | Monero XMR    |   |      |      |
-| Yoshi  | Shiba Inu (SHIB)    |   |      |      |
+| Name   | Coin            |
+|--------|-----------------|
+| Keeler | ETH             |
+| Rocky  | DOGE            |
+| Yuiko  | BNB(Binance)    |
+| Jan    | Tether (USDT)   |
+| Antoni | XRP(Ripple)     |
+| Victor | Cardano (ADA)   |
+| Manaha | LTC (LIte Coin) |
+| Marina | Solano (SOL)    |
+| May    | (DAI)           |   
+| Ayane  | Zcash (ZEC)     |  
+| Yosuke  | USD COIN  (USDC)  | 
+| Naomi  |  TRX Tron       |  
+| Amine  |  KLIMA          |
 
 ✩࿐  ⊹˚. ♡
 
@@ -76,8 +73,8 @@ Justify the tools/structure of your solution
 1. The electronic ledger is a text-based software (Runs in the Terminal).
 2. The electronic ledger display the basic description of the cyrptocurrency selected.
 3. The electronic ledger allows to enter, withdraw and record transactions.
-4. The electronic ledger will connect to a realtime library that will update the value of Solana every time the program is initiated
-5. The electronic ledger will include a description of the cryptocurrency's value that entails a description of the market so that even if the client has little to no knowledge, decisions such as buying and selling will be more informed
+4. The electronic ledger will connect to a realtime library that will update the value of Solana every time the program is initiated.
+5. The electronic ledger will
 6. The electronic ledger will have a personalised design according to the client preferences. 
 
 ✩࿐  ⊹˚. ♡
@@ -209,7 +206,7 @@ def forgot_password():
 #calling functions
 
 
-while True:
+
     menu()
     event = keyboard.read_event(suppress=True)
 
@@ -247,35 +244,128 @@ while True:
 
 
 ## Cryptocurrency Realtime Value
-    
-```.py
 
+₊˚⊹♡₊˚⊹♡
+
+I agreed with Sato san that I would incorporate a Realtime Value of Solana, I did this easily throught the ccxt library:
+
+➀ I initalized the connection to the Binance cryptocurrency exchange using the ccxt library, which is what provides acces to these exchanges
+```.py
+exname = 'binance'
+exchange = getattr(ccxt, exname)()
+```
+➁ I specified my cryptocurrency that I wanted to extract *SOL* and to which currency I wanted to exchange *USDT* setting it to:
+```.py
+symbol = 'SOL/USDT'
+```
+➂ I created the getsolana function that uses the exchanges application programming interface, this basically is a set of rules and tools that allow software applications to interact mutually,
+to get the stock data for the specified symbol(*SOL*). Including the last traded price which gives our function the last updated price.
+```.py       
+stock = exchange.fetch_ticker(symbol)
+```
+➃ If the function finds that there is no network or any exchange malfunctions, the code just gets the stock data and returns it
+```.py       
+return stock['last']
+```
+⑤ However if there is a network or exchange error it justs displays error and the error name recieved from the cctxt
+```.py
+print(f"network error...: {e}"
+```
+⑥ Finally if the exchange has gone correctly it stores the solana value in solana_price
+```.py
+solana_price = getsolana()
+```
+
+I also added colours using ANSI values from 
+[this website](https://ss64.com/nt/syntax-ansi.html) , I had considering installing colorama but didnt want to have the user download too many libraries, especially when it can be done easily without it.
+
+
+*The code is displayed below*
+
+
+₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡
+```.py
 import ccxt
 import time
+import keyboard
+
+def loading():
+    time.sleep(0.5)
+    print("⏳")
+    time.sleep(1)
+    print("⌛️")
+    time.sleep(0.5)
+
+
+darkred=\33[31m
+darkgreen=\33[32m
+default=\33[0m
+pink=\33[35m
+
 
 exname = 'binance'
-
-# Initialize the exchange instance
 exchange = getattr(ccxt, exname)()
-
-# Specify the symbol for SOL/USDT
 symbol = 'SOL/USDT'
 
 def getsolana():
     try:
-        ticker = exchange.fetch_ticker(symbol)
-        return ticker['last']
+        stock = exchange.fetch_ticker(symbol)
+        return stock['last']
     except ccxt.NetworkError as e:
-        print(f"network error...: {e}")
+        print(f"{darkred}network error...: {e}{default}")
         return None
     except ccxt.ExchangeError as e:
-        print(f"unexpected error!...: {e}")
+        print(f"{darkred}unexpected error...: {e}{default}")
         return None
 
 solana_price = getsolana()
-if solana_price is not None:
-    print(f"SOL Current Value in Dollars: {solana_price}")
-    askcurrency = input("Would you like to know it in
-else:
-    print("Failed to fetch SOL/USDT price.")
 
+if solana_price is not None:
+    yn = 0
+
+    while yn == 0:
+        print("Press a key to choose a currency:")
+        print("A. Euro [̲̅€̲̅(̲̅20̲̅)̲̅€̲̅]\nB. Dollar[̲̅$(̲̅1)̲̅$]\nC. Pound[̲̅£(̲̅10)̲̅£]\nD. Yen[̲̅¥(̲̅1000̲̅)̲̅¥]\nE. Other")
+        
+        event = keyboard.read_event(suppress=True)
+        if event.event_type == keyboard.KEY_DOWN:
+            key = event.name.upper()
+            if key == 'A':
+                euro = solana_price * 0.94
+                loading()
+                print(f"{darkgreen}SOL value in EUROS is {euro}€{default}")
+                yn = 1
+            elif key == 'B':
+                dollar = solana_price
+                loading()
+                print(f"{darkgreen}SOL value in DOLLARS is ${dollar}{default}")
+                yn = 1
+            elif key == 'C':
+                pound = solana_price * 0.82
+                loading()
+                print(f"{darkgreen}SOL value in POUNDS is £{pound}{default}")
+                yn = 1
+            elif key == 'D':
+                yen = solana_price * 149.38
+                loading()
+                print(f"{darkgreen}SOL value in YEN is ¥{yen}{default}")
+                yn = 1
+            elif key == 'E':
+                xcurrency = float(input("Please input the number that dollars need to be multiplied to get your currency:\nExample: Euros is 0.94 of a dollar "))
+                xname = input("What is the name of the currency?")
+                xcalc = solana_price * xcurrency
+                loading()
+                print(f"{darkgreen}SOL value in {xname} is {xcalc}")
+                yn = 1
+            else:
+                loading()
+                print(f"{darkgreen}(𖦹 _ 𖦹)...\nError: Invalid choice{default}{default}")
+else:
+    loading()
+    print(f"{darkred}(𖦹 _ 𖦹)...Couldn't fetch the SOL value{default}")
+
+
+```
+₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡
+
+## 
