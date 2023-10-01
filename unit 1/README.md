@@ -16,8 +16,8 @@ A digital Wallet by Marina Mendieta
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
 # Criteria A: Planning  　
-![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/734807779ad6cc5b0620359f950d2ff1.gif)
 
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/734807779ad6cc5b0620359f950d2ff1.gif" width=50% height=50%>
 ‧˚₊⋅ ୨୧ ⋅₊˚‧ 　 　　 　　　　 　
 
 ## Problem definition
@@ -58,11 +58,15 @@ An example of the data stored is
 ## Proposed Solution
 
 Design statement:
-I will to design and make a ———— for a client who is ———. The ——– will about ———— and is constructed using the software ———. It will take  ———- to make and will be evaluated according to the criteria ———.
+I will to design and make a digital ledger for a client who is Ms Sato . The Digital Ledger will about Solana and is constructed using the software Python. It will take until Oct 2 to make and will be evaluated according to the criteria below.
 
-** add a description of your coin and citation **
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/Solana_logo-min.png" width=10% height=10%>
 
-Justify the tools/structure of your solution
+
+*Solana is a blockchain platform designed to host decentralized, scalable applications. Founded in 2017, it is an open-source project currently run by Solana Foundation based in Geneva, while the blockchain was built by San Francisco-based Solana Labs. I chose Solana due to its high speed transaction rate with significant lower transaction rates than  classic competitors like Ethereum. It uses the ticker symbol **SOL** and had almost 12,000% and at one point had a market capitalization of over $66 billion, making it the fifth-largest cryptocurrency by this measure at the time.*
+
+Justify the tools/structure of your solution: Python is the language that Im developing this digital ledger with, for three main reasons, the first because it is a easy language to manipulate and create with, the second because it has a extensive number of libraries to support my code and third because its a language im quite familiar with. 
+For the libraries I will use matplotlib to make the graph and cxxt to update the currencys real time value. To create the code im using Pycharm and i used shortly eclipse with pydev as the python tool. Where I manage my project is my github repository unit, here I document my progres throughout the 
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
@@ -247,14 +251,14 @@ def forgot_password():
 
 ₊˚⊹♡₊˚⊹♡
 
-I agreed with Sato san that I would incorporate a Realtime Value of Solana, I did this easily throught the ccxt library:
+I agreed with Sato san that I would incorporate a Realtime Value of Solana,I thought about using CoinGecko API value however it would not update realtime like I wanted so instead I did this easily throught the ccxt library:
 
 ➀ I initalized the connection to the Binance cryptocurrency exchange using the ccxt library, which is what provides acces to these exchanges
 ```.py
 exname = 'binance'
 exchange = getattr(ccxt, exname)()
 ```
-➁ I specified my cryptocurrency that I wanted to extract *SOL* and to which currency I wanted to exchange *USDT* setting it to:
+➁ I specified my cryptocurrency that I wanted to extract *SOL* and to which currency I wanted to exchange *USDT*(I know USDT is not the dollar but it is astablecoin that usually gravitates around the value of 1 dolllar) setting it to:
 ```.py
 symbol = 'SOL/USDT'
 ```
@@ -279,15 +283,21 @@ solana_price = getsolana()
 I also added colours using ANSI values from 
 [this website](https://ss64.com/nt/syntax-ansi.html) , I had considering installing colorama but didnt want to have the user download too many libraries, especially when it can be done easily without it.
 
+I also added an option to choose which currency to output the value of solana in, including not saved currencys that simply by adding the name and comparison to the dollar it calculates the solana value in that currency.
+
 
 *The code is displayed below*
 
 
 ₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡
 ```.py
+pip install ccxt
 import ccxt
+print("imported ccxt")
 import time
+print("imported time")
 import keyboard
+print("imported keyboard")
 
 def loading():
     time.sleep(0.5)
@@ -368,4 +378,6 @@ else:
 ```
 ₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡
 
-## 
+## Sort Transactions 
+
+```.py 
