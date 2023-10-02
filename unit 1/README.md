@@ -87,10 +87,20 @@ For the libraries I will use matplotlib to make the graph and cxxt to update the
 ![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/8ce4bbed258c2b5d02589fd35e38b3b6.gif)
 
 ## System Diagram
-
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/Agregar%20texto%20(1).png" width=80% height=80%>
 ## Flow Diagrams
 [image]
 **Fig. 1** This is the flow diagram for the login system
+
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
+
+**Fig. 2** This is the flow diagram for the registration system
+
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
+
+**Fig. 3** This is the flow diagram for the Forgotten Password system
+
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
 
 ## Record of Tasks
 | Task No | Planned Action                                       | Planned Outcome                                                                                                   | Time estimate | Target completion date | Criterion |
