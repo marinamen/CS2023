@@ -78,8 +78,9 @@ For the libraries I will use matplotlib to make the graph and cxxt to update the
 2. The electronic ledger display the basic description of the cyrptocurrency selected.
 3. The electronic ledger allows to enter, withdraw and record transactions.
 4. The electronic ledger will connect to a realtime library that will update the value of Solana every time the program is initiated.
-5. The electronic ledger will
-6. The electronic ledger will have a personalised design according to the client preferences. 
+5. The electronic ledger will sort the Transactions in 3 parameters.
+6. The electronic ledger will have a visually aesthetic effects, such as kaomojis and colours.
+7. The electronic ledger will conver the Currency into 4 different types of currencies plus the option to add any currency. 
 
 ✩࿐  ⊹˚. ♡
 
