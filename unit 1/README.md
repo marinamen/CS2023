@@ -103,16 +103,25 @@ For the libraries I will use matplotlib to make the graph and cxxt to update the
 <img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
 
 ## Record of Tasks
-| Task No | Planned Action                                       | Planned Outcome                                                                                                   | Time estimate | Target completion date | Criterion |
-|---------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
-| 1       | Create system diagram                                | To have a clear idea of the hardware and software requirements for the proposed solution                          | 10min         | Sep 24                 | B         |
-| 2       | Create Basic Description for SOL                     | To have a text at the start of the initiation of the digital wallet, outlining a description of SOL               | 10 min        | Sep 26                 | C         |
-| 3       | Create a Login System                                | To have a functioning Login system that the user can use to secure the wallet                                     | 20min         | Sep 27                 | C         |
-| 4       | Test Login System and Add Registration System        | Tested Login and worked, decided to add a regiter user system so that the wallet can begin by creating an account | 20min         | Sep 27                 | C         |
-| 5       | Test Registration and Add Forgotten Password Feature | Registration and Login system functional, therefore decided to add a Forgotten Password option                    | 15min         | Sep 27                 | C         |
-| 6       | Create a login system flowchart                      | To create a flowchart that represents the program created                                                         | 5min          | Sep 27                 | B         |
-| 7       | Create a function that updates SOL realtime          | To update SOLs value and print it once every time the program is opened.                                          | 30min         | Sep 28                 | C         |
-| 8       | Test Realtime SOL                                    | Encountered a few errors, fixed them and now have a functioning SOL realtime value.                               | 10min         | Sep 28                 | C         |
+| Task No | Planned Action                                       | Planned Outcome                                                                                                                          | Time estimate | Target completion date | Criterion |
+|---------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
+| 1       | Create system diagram                                | To have a clear idea of the hardware and software requirements for the proposed solution                                                 | 10min         | Sep 24                 | B         |
+| 2       | Create Basic Description for SOL                     | To have a text at the start of the initiation of the digital wallet, outlining a description of SOL                                      | 10 min        | Sep 26                 | C         |
+| 3       | Create a Login System                                | To have a functioning Login system that the user can use to secure the wallet                                                            | 20min         | Sep 27                 | C         |
+| 4       | Test Login System and Add Registration System        | Tested Login and worked, decided to add a regiter user system so that the wallet can begin by creating an account                        | 20min         | Sep 27                 | C         |
+| 5       | Test Registration and Add Forgotten Password Feature | Registration and Login system functional, therefore decided to add a Forgotten Password option                                           | 15min         | Sep 27                 | C         |
+| 6       | Create a login system flowchart                      | To create a flowchart that represents the program created                                                                                | 5min          | Sep 27                 | B         |
+| 7       | Create a function that updates SOL realtime          | To update SOLs value and print it once every time the program is opened.                                                                 | 30min         | Sep 28                 | C         |
+| 8       | Test Realtime SOL                                    | Encountered a few errors, fixed them and now have a functioning SOL realtime value.                                                      | 10min         | Sep 28                 | C         |
+| 9       | Create a Sorting System                              | A functional sorting systems for the transactions in the users digital ledger                                                            | 10min         | Sep 29                 | C         |
+| 10      | Decide Sorting System                                | The sorting system have three parameters, amount, category and date, the user can choose which and reverse sort each                     | 15min         | Sep 29                 | C         |
+| 11      | Test Sorting System                                  | Only encountered one error, that the transactions were hard to confirm that the date format inputted by the user previously was correct  | 5min          | Sep 30                 | C         |
+| 12      | Finalize Sorting System                              | Finalized the program and fixed the previous error, a program that includes everything that I brainstormed plus the reverse sort search. | 10min         | Sep 30                 | C         |
+| 13      | Update GitHub Repository                             | Update the Github repository to add all of the documentation for the program and added more visually pleasing graphics.                  | 30min         | Sep 30                 | C,B       |
+| 14      |                                                      |                                                                                                                                          |               |                        |           |
+| 15      |                                                      |                                                                                                                                          |               |                        |           |
+| 16      |                                                      |                                                                                                                                          |               |                        |           |
+| 17      |                                                      |                                                                                                                                          |               |                        |           |
 
 # Criteria C: Development
 ![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/gif%201.gif)
@@ -379,7 +388,7 @@ if solana_price is not None:
                 yn = 1
             else:
                 loading()
-                print(f"{darkgreen}(𖦹 _ 𖦹)...\nError: Invalid choice{default}{default}")
+                print(f"{darkred(𖦹 _ 𖦹)...\nError: Invalid choice{default}{default}")
 else:
     loading()
     print(f"{darkred}(𖦹 _ 𖦹)...Couldn't fetch the SOL value{default}")
@@ -394,8 +403,11 @@ else:
 
 An additional function I added to increase user functionality, was a method of sorting all of the transactions inputted.
 I sorted giving 3 options:
+
 ⭒Date
+
 ⭒Amount
+
 ⭒Category
 
 And the additional 
@@ -414,40 +426,73 @@ transactions.sort(key=key_function, reverse=reverse)
 
 
 
-
 from datetime import datetime
-def sorter(sort1, reverse=False):
+
+def sorter(sort_option, reverse=False):
     with open('transactions.txt', 'r') as transfile:
         transactions = transfile.readlines()
     
-    if sortin == 'date':
-        # Sort by transaction date.
-        def key_function(transaction):
-            date_str = transaction.split(',')[0]
-            return datetime.strptime(date_str, '%Y-%m-%d')
-    elif sortin == 'amount':
-        # Sort by transaction amount.
-        def key_function(transaction):
-            return float(transaction.split(',')[-1])
-    elif sortin == 'category':
-        # Sort by transaction category.
-        def key_function(transaction):
-            return transaction.split(',')[1].strip()
-    else:
-        # Default to sorting by date if an invalid option is provided.
-        print("(𖦹 _ 𖦹)... Error, sorting by date as default")
-        key_function = lambda x: datetime.strptime(x.split(':')[0], '%Y-%m-%d')
+    if sort_option == 'date':
+        while c=1:
+        reverse=not reverse
+        reverser=int(input("Would you like the transactions to appear from Earliest to Oldest(1) or Oldest to Earliest?(2)))
 
-    # Sort transactions based on the selected key, with an option to reverse the sorting order.
+        if reverser == 1:
+            key = lambda transaction: datetime.strptime(transaction.split(',')[0], '%y-%m-%d')
+            c=0
+        elif reverser == 2:
+            reverse=not reverse
+            key_function = lambda transaction: datetime.strptime(transaction.split(',')[0], '%y-%m-%d')
+            c=0
+         else:
+            print(f"{darkred}(𖦹 _ 𖦹)...\nError: invalid choice")
+            
+    elif sort_option == 'amount':
+        while c=1:
+        reverse=not reverse
+        reverser=int(input("Would you like the transactions to appear from most to least(1) or least to most?(2)))
+
+        if reverser == 1:
+            key = lambda transaction: float(transaction.split(':')[-1])')
+            c=0
+        elif reverser == 2:
+            reverse=not reverse
+            key = lambda transaction: float(transaction.split(':')[-1])
+            c=0
+         else:
+            print(f"{darkred}(𖦹 _ 𖦹)...\nError: invalid choice")
+
+    elif sort_option == 'category':
+        while c=1:
+        reverse=not reverse
+        reverser=int(input("Would you like the transactions to appear from alphabetically(1) or reversed?(2)))
+
+        if reverser == 1:
+          key = lambda transaction: transaction.split(':')[1].strip()
+            c=0
+        elif reverser == 2:
+            reverse=not reverse
+            key = lambda transaction: transaction.split(':')[1].strip()
+            c=0
+         else:
+            print(f"{darkred}(𖦹 _ 𖦹)...\nError: invalid choice")
+        key = lambda transaction: transaction.split(':')[1].strip()
+    else:
+
+        print("(𖦹 _ 𖦹)... Error, sorting by date as default")
+        key= lambda x: datetime.strptime(x.split(':')[0], '%Y-%m-%d')
+
+
     transactions.sort(key=key_function, reverse=reverse)
     
     # Print the sorted transactions.
-    print("\n ♯ Sorted Transactions by", sort.capitalize(), "ೀ :")
+    print("\n ♯ Sorted Transactions by", sort_option.capitalize(), "ೀ :")
     for t in transactions:
         print(t.strip())
 
-sortin=input(f"How would you like to sort your transactions?\nCategory\nAmount\nDate").lower()
-sorter(sortin)
+sort_option = input("How would you like to sort your transactions?\nCategory\nAmount\nDate").lower()
+sorter(sort_option)
+
 ```
 
 ⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒
