@@ -2,16 +2,22 @@
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
-
-![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/78e154025781802198e0401faa508d9a.gif)
+**Coin Guardian**
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
-[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]
 
-A digital Wallet by Marina Mendieta
+*A Python Developed Terminal Based Digital Ledger by Marina Mendieta*
+
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/Screen_Shot_2023-10-04_at_23.38.30-removebg-preview.png" width=20% height=20%>
 
 [̲̅$̲̅(̲̅5̲̅0)̲̅$̲̅]
+
+‧˚₊⋅ ୨୧ ⋅₊˚‧
+
+
+![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/78e154025781802198e0401faa508d9a.gif)
+
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
@@ -60,13 +66,40 @@ An example of the data stored is
 Design statement:
 I will to design and make a digital ledger for a client who is Ms Sato . The Digital Ledger will about Solana and is constructed using the software Python. It will take until Oct 2 to make and will be evaluated according to the criteria below.
 
+✩࿐  ⊹˚. ♡
+
 <img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/Solana_logo-min.png" width=10% height=10%>
 
+**Why Solana**
 
-*Solana is a blockchain platform designed to host decentralized, scalable applications. Founded in 2017, it is an open-source project currently run by Solana Foundation based in Geneva, while the blockchain was built by San Francisco-based Solana Labs. I chose Solana due to its high speed transaction rate with significant lower transaction rates than  classic competitors like Ethereum. It uses the ticker symbol **SOL** and had almost 12,000% and at one point had a market capitalization of over $66 billion, making it the fifth-largest cryptocurrency by this measure at the time.*
+Solana is a blockchain platform designed to host decentralized, scalable applications. Founded in 2017, it is an open-source project currently run by Solana Foundation based in Geneva, while the blockchain was built by San Francisco-based Solana Labs. I chose Solana due to its high speed transaction rate with significant lower transaction rates than  classic competitors like Ethereum. It uses the ticker symbol **SOL** and had almost 12,000% and at one point had a market capitalization of over $66 billion, making it the fifth-largest cryptocurrency by this measure at the time.
 
-Justify the tools/structure of your solution: Python is the language that Im developing this digital ledger with, for three main reasons, the first because it is a easy language to manipulate and create with, the second because it has a extensive number of libraries to support my code and third because its a language im quite familiar with. 
-For the libraries I will use matplotlib to make the graph and cxxt to update the currencys real time value. To create the code im using Pycharm and i used shortly eclipse with pydev as the python tool. Where I manage my project is my github repository unit, here I document my progres throughout the 
+*Faster, Cheaper and a look towards the Future*
+
+Solana can handle 30,000 transactions per second whereas Bitcoin only handles 7TPS and Solana's closest competitor Ethereum handles 20TPS, as hardware technology speed increases so does Solana's. Transactions Fees are only *$0.000125*　which allows for more benefit from my Client no matter the expertise whereas "rivaling" cryptocurrencies such as DOGE costs *0.6$* and BNB has a *0.5%* Fee for 10$ minimum transactions and an additional whopping *3.75%* if use of Debit Card. Although currency's like Tether, DAI and USDC are considered stablecoins, they are only used to hold value and not have as much versality as Solana. Solana, a versatile blockchain platform, holds promise for the future due to its adaptability for decentralized applications.*Its innovative consensus mechanism, decentralization, and an active developer community enhance its appeal for development and younger generations therefore solana's ability to cater to a wide range of dapps use cases and maintain network security position it as a competitor for the future of blockchain technology and decentralized ecosystems.*
+
+
+[What is Solana - Forbes](https://www.forbes.com/advisor/investing/cryptocurrency/what-is-solana/)
+
+[Why Solana is the one to watch in 2023 - Disruption Banking](https://www.disruptionbanking.com/2023/03/27/why-solana-is-the-one-to-watch-in-2023/)
+
+
+✩࿐  ⊹˚. ♡
+
+
+**Justify the tools/structure**
+
+I will plan and make a computerized and simple to utilize crypto record for Sato san a nearby client who is a starting altcoiner . he digital ledger will consist of seven separate programs with a total of about 456 lines and 3 databases storing following data(1. User information ,2.Transactions, 3. Solana Realtime value saved from the CCXT library).
+ which all come together in one program with exception of the functions , having the functions in another program and separating it will greatly facilitating debugging erros, which appeared quite often . It is built utilizing Python 3.12 on PyCharm and runs on any Mac Terminal that has access to the internet if the success criteria 6 wants to be present. Making it a laptop letter based terminal program simplifies the ledger so that our Client doesn't need any prior experience and the development of the program is much more versatile.
+
+
+**Why Python?**
+
+Python is the language that Im developing this digital ledger with, for three main reasons, the first because it is a easy language to manipulate and create with, the second because it has a extensive number of libraries to support my code and third because its a language im quite familiar with. It aligns with the developing values and actually encourages further expansion of it. Easy to learn, the python programming language concatanates our begginer friendly program and high maleability of it.
+
+ *What Within Python*
+ 
+For the libraries I will use matplotlib to make the graph and cxxt to update the currencys real time value, time to add datatime to Solana's value to calculate the average for predicions of whether to Sell or to Buy. To create the code im using Pycharm and I used shortly eclipse with pydev as the python tool. Where I manage my project is my github repository unit, here I document my progress throughout the whole proccess.The digital ledger will consist of seven separate programs with a total of about 456 lines and 3 databases storing following data(1. User information ,2.Transactions, 3. Solana Realtime value saved from the CCXT library).
 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
@@ -102,6 +135,17 @@ For the libraries I will use matplotlib to make the graph and cxxt to update the
 **Fig. 3** This is the flow diagram for the Forgotten Password system
 
 <img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
+
+## Test plan
+| Task No |        Test type            |          Specific type               |        Planned outcome|       Procedure          |           Outcome           |
+|---------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
+|1|   non-functional testing|performance testing|Identify possible changes in code which would make it faster and which would lower the loading time|Analysed all functions of the program and focused on those which take more than 0.2 sec to perform and further analysed them| The outcome was that the procedure was a success, I got rid of 2 while loops and changed them into for loops which a bit faster 
+|2|   non-functional testing|usability testing|without interfering, see if there is anything which would make the test user struggle(uncleat messages?instructions) and work. on that|Test user 001 used the program and shared its concerns| 2 unclear messages where changed and one print color as well in order to highlight the importance of the message that it stated
+|3|   Non-Functional testing|Usability testing|Same as test(2) just hopefully other suugestions since it is a differnet person testing it this time|Test user 002 used the program and shared its concerns| Added a link for the current SOLANA price to every messages which asks for the real-time price
+|4|Functional testing|Unit Testing(deposit/withdraw)|See if there is something that can be improved and something that is not working in deposit/withdrawal part of the program and if there is, fix it|Start the program and specificly run the deposit/withdrawal part and depo/withdrawal overview option and see if everything is correct| Found that there was a mistake in the fromula used for porfolio overview for the porfolio change option, and fixed it so now it works properly
+|5|Functional testing|Integration testing|connect two new options to the main program and see if everything works properly|Connect the programs which contain these two features and call them in the main tab program which is connected to thwe main|Everything worked properly, no problems appeared 
+|6|Functional testing|System testing|Test the whole program now that it is finally finished and everything should work properly|Because of the feature of the program to return to the menu tab, testing of every feature will be done in the same run|Everything worked well no problems occured
+
 
 ## Record of Tasks
 | Task No | Planned Action                                       | Planned Outcome                                                                                                                          | Time estimate | Target completion date | Criterion |
