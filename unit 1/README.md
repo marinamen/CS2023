@@ -136,6 +136,11 @@ For the libraries I will use matplotlib to make the graph and cxxt to update the
 
 <img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/0b92184f9ae10ddf6918f3b1fd5aa2bd26958a2c.png" width=50% height=50%>
 
+
+unit testing, integration testing and user acceptance/usability testing
+
+
+
 ## Test plan
 | Task No |        Test type            |          Specific type               |        Planned outcome|       Procedure          |           Outcome           |
 |---------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----------|
@@ -194,6 +199,11 @@ I stored all of the users information in a separate csv file called *data.txt*, 
 It was read using the open function in three different ways **a** which appends the users data during registration, **r** which reads and authenticates the validity of the username and password, and finally **w** which writes and replaces the old password with the new one in the forgot password function.
 I also used the Time Library to add more interaction and realistic loading times into the wallet system.
 
+
+Fof the hashing of my password I was between hmac and passlib for the password hashing, hmac's weaknesses include that its typical use is for data integrity and authentication since it does not include common security feautures like salting and multiple iterations
+Passlib is better than HMAC for password hashing because it provides a dedicated, secure, and user-friendly solution tailored for password storage. Passlib incorporates salting, adaptive hashing, and security best practices, guarding against common attacks like brute force and rainbow tables, ensuring robust password security.
+
+
 *The code is displayed below*
 
 
@@ -203,6 +213,8 @@ I also used the Time Library to add more interaction and realistic loading times
 ```.py
 
 #Login and register function + some used
+
+from passlib.hash import pbkdf2_sha256
 
 def menu():
     print("\n ♯ menu ೀ :")
@@ -216,20 +228,26 @@ def loading():
     print("⌛️")
     time.sleep(0.5)
 
-
-
 def register(username, password):
+    with open('data.txt', 'r') as datafile:
+        if username in datafile:
+         
+    hashedpass = encryption.hash(password)
     with open('data.txt', 'a') as datafile:
-        datafile.write(f'{username}:{password}\n')
+        datafile.write(f'{username}:{hashedpass}\n')
+
 
 def login(username, password):
     with open('data.txt', 'r') as datafile:
         lines = datafile.readlines()
         for line in lines:
             stored_user, stored_pass = line.strip().split(':')
-            if username == stored_user and password == stored_pass:
-                return True
-    return False
+            if username == stored_user:
+                if pbkdf2_sha256.verify(password, hashedpass):
+                     return True
+                else:
+                     return False
+    
 
 #forgot password function uses two security questions to validate that the correct user forgot their password
 
