@@ -92,6 +92,7 @@ Solana can handle 30,000 transactions per second whereas Bitcoin only handles 7T
 I will plan and make a computerized and simple to utilize crypto record for Sato san a nearby client who is a starting altcoiner . he digital ledger will consist of seven separate programs with a total of about 456 lines and 3 databases storing following data(1. User information ,2.Transactions, 3. Solana Realtime value saved from the CCXT library).
  which all come together in one program with exception of the functions , having the functions in another program and separating it will greatly facilitating debugging erros, which appeared quite often . It is built utilizing Python 3.12 on PyCharm and runs on any Mac Terminal that has access to the internet if the success criteria 6 wants to be present. Making it a laptop letter based terminal program simplifies the ledger so that our Client doesn't need any prior experience and the development of the program is much more versatile.
 
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/Python-logo-notext.svg.png" width=10% height=10%>
 
 **Why Python?**
 
@@ -176,16 +177,18 @@ unit testing, integration testing and user acceptance/usability testing
 # Criteria C: Development
 ![](https://github.com/marinamen/CS2023/blob/main/unit%201/pictures/gif%201.gif)
 
+In order of the Algorithm
+
 ## Login System 
 ‧˚₊⋅ ୨୧ ⋅₊˚‧
 
-Sato san requested a register and login feauture, so I delivered using the below:
+Sato san requested a register and login feature, so I delivered using the below:
 
 ୨ৎ Functions for both Register and Login.
 
-୨ৎ An option in case the password was forgotten that validates the User's identity through 2 securiy questions and conditionals.
+୨ৎ An option/Functio in case the password was forgotten that validates the User's identity through 2 securiy questions and conditionals.
 
-୨ৎ Pleasing Visuals to make the System more aesthetic.
+୨ৎ ASCII art to make the System more visually appealing.
 
 ୨ৎ Password encrytiption through hashing using pass lib with an algorithm of pbkdf2_sha256, to secure
 
@@ -202,9 +205,19 @@ It was read using the open function in three different ways **a** which appends 
 I also used the Time Library to add more interaction and realistic loading times into the wallet system.
 
 
-Fof the hashing of my password I was between hmac and passlib for the password hashing, hmac's weaknesses include that its typical use is for data integrity and authentication since it does not include common security feautures like salting and multiple iterations
+For the hashing of my password I was between hmac and passlib for the password hashing, hmac's weaknesses include that its typical use is for data integrity and authentication since it does not include common security feautures like salting and multiple iterations
 Passlib is better than HMAC for password hashing because it provides a dedicated, secure, and user-friendly solution tailored for password storage. Passlib incorporates salting, adaptive hashing, and security best practices, guarding against common attacks like brute force and rainbow tables, ensuring robust password security.
 
+
+Below is an example of hashing with *pbkdf2_sha256* encryption.
+
+```.py
+>>> hash = pbkdf2_sha256.hash("toomanysecrets")
+>>> hash
+'$pbkdf2-sha256$29000$N2YMIWQsBWBMae09x1jrPQ$1t8iyB2A.WF/Z5JZv.lfCIhXXN33N23OSgQYThBYRfk'
+```
+The importance if encryption is critical because softwares such as digital ledgers, since security is something that is taken for guaranteed by the client when often it shouldn't. 
+When User's data is stored in easily accesible data files, our client's security and value that is held here has great importance therefore hashing is essential.
 
 *The code is displayed below*
 
@@ -328,6 +341,54 @@ def forgot_password():
                 forgot_password()
 ```
 ‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧‧˚₊⋅ ୨୧ ⋅₊˚‧
+## Basic Description of Solana
+
+After the user logs in successfully, the basic description of Solana Cryptocurrency is listed as below, it procceeds to list the benefits of solana and also the main upsides of it.
+
+```.py
+print("""          💲 ✩ Solana Currency ✩ 💲
+    
+            ✩ Your Digital Ledger's Trusty Companion ✩
+
+ Solana currency, often denoted as SOL, is a cutting-edge cryptocurrency designed to 
+ power your digital ledger and make transactions faster, more efficient, and secure. 
+ It's like the digital cash of the future, built for the modern age.
+ 
+✩Lightning-Fast Transactions:✩ 
+  Solana is known for its incredible speed. It can handle thousands 
+  of transactions per second, ensuring your payments are swift and hassle-free.
+
+✩ Low Transaction Costs : ✩
+  Sending and receiving SOL is cost-effective, 
+  making it ideal for both large and small transactions. 
+  Say goodbye to hefty fees!
+
+✩ Security First: ✩ 
+ Solana uses advanced encryption and decentralized technology
+ to keep your digital ledger safe from fraud and tampering. 
+ Your transactions are protected around the clock.
+
+✩ Stability: ✩ 
+ SOL has gained a reputation for its stability in the cryptocurrency
+ world. You can trust it to retain its value over time.
+
+✩Eco-Friendly:✩
+ Solana takes environmental concerns seriously. 
+ It's designed to be energy-efficient, so you can enjoy the benefits
+ of cryptocurrency without harming the planet.
+
+Using SOL in your digital ledger is like having a 
+reliable and fast payment method at your fingertips. 
+Whether you're making everyday purchases, investing, or managing your finances, 
+Solana currency is here to simplify your digital ledger experience.
+
+Welcome to the world of Solana, where your digital ledger transactions are about to get a whole lot better!
+
+
+
+""")
+
+```
 
 
 ## Cryptocurrency Realtime Value
@@ -374,8 +435,9 @@ I also added an option to choose which currency to output the value of solana in
 
 ₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡₊˚⊹♡
 ```.py
-pip install ccxt
+
 import ccxt
+
 print("imported ccxt")
 import time
 print("imported time")
@@ -554,9 +616,141 @@ def sorter(sort_option, reverse=False):
     for t in transactions:
         print(t.strip())
 
+
+
+
+
+
 sort_option = input("How would you like to sort your transactions?\nCategory\nAmount\nDate").lower()
 sorter(sort_option)
 
 ```
 
 ⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒˚｡⋆⋆｡𖦹°⭒
+
+## Transaction History Graph
+
+Finally my additional success criteria was a transaction history line graph that I plotted using matplotlib library, and the values of change within each users ledger balance. Not of the amount added each transaction. The algorithm follows a a set of steps of opening the data files, then reading the correct information for the current user and extracting the transaction history, that is formatted in year,month,day, and then matplotlib plots the graph with:
+```.py 
+plt.show()
+```
+
+*The Code is Displayed Below*
+```.py 
+
+import matplotlib.pyplot as plt
+import datetime
+
+def plot_transactions(stored_user,stored_pass,balance):
+    with open('transactions.txt', 'r') as file:
+        lines = file.readlines()
+    user_transactions = [line.strip().split(',') for line in lines if line.strip().split(',')[0] == username and line.strip().split(',')[1] == password]
+    dates = [datetime.datetime.now()] 
+    balances = [0]
+    for transaction in user_transactions:
+        date_str, _, balance_str = transaction
+        date = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+        balance = int(balance_str)
+        dates.append(date)
+        balances.append(balance)
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(dates, balances, marker='o', linestyle='-', color='b')
+    plt.title(f"{username}'s transaction historyೀ ")
+    plt.xlabel('date')
+    plt.ylabel('balance (SOL amount)')
+    plt.grid(True)
+    plt.show()
+```
+
+## Withdrawal, Deposit and Balance System
+
+
+
+```.py
+beuro=""
+bdollar=""
+bpound=""
+byen=""
+            
+while True:
+print("\nUser Menu:")
+print(f"1. Deposit  ✩\n2. Withdraw  ✩\n3. Check Balance  ✩\n4. Sort Transactions  ✩ \n5. Graph of Transactions  ✩\n6. Logout  ✩ ")
+menu2 = int(input("Select an option  ೀ : "))
+                if menu2 == '1':
+                    amount = float(input("Enter the deposit amount: "))
+                    deposit(username, amount)
+                    print(f"Deposited SOL{amount}. New balance: SOL{show_balance(username):.2f}")
+                elif menu2 == '2':
+                    amount = float(input("Enter the withdrawal amount: "))
+                    if withdraw(username, amount):
+                        print(f"Withdrew SOL{amount}. New balance: SOL{show_balance(username):.2f}")
+                    else:
+                        print("Insufficient balance.")
+                elif menu2 == '3':
+                    balance = show_balance(username)
+                    if balance is not None:
+                        currency_input=input("Press a key to choose a currency:\nA. Euro [̲̅€̲̅(̲̅20̲̅)̲̅€̲̅]\nB. Dollar[̲̅$(̲̅1)̲̅$]\nC. Pound[̲̅£(̲̅10)̲̅£]\nD. Yen[̲̅¥(̲̅1000̲̅)̲̅¥])
+                        capitalise_cinput=currency_input.upper()
+                        if capitalise_cinput == "A":
+                            beuro=(balance*solana_price)*0.95
+                            print(f"Your currency in SOL is{balance} and its worth{beuro}€")
+                        elif capitalise_cinput == "B":
+                            bdollar=balance*solana_price
+                            print(f"Your currency in SOL is{balance} and its worth${bdollar}")
+                        elif capitalise_cinput == "C":
+                            bpound=(balance*solana_price)*0.82
+                            print(f"Your currency in SOL is{balance} and its worth£{beuro}")
+                        elif capitalise_cinput == "D":
+                            byen=(balance*solana_price)*148
+                            print(f"Your currency in SOL is{balance} and its worth{byen}¥")
+                        else:
+                            loading()
+                            print(f"{darkred(𖦹 _ 𖦹)...\nError: Invalid choice{default}")
+                    
+                    else:
+                        print("Error retrieving balance.")
+
+                elif menu2 == '4':
+                    sort_option = input("how would you like to sort your transactions?\nCategory\nAmount\nDate: ").lower()
+
+                    if sort_option in ['category', 'amount', 'date']:
+                        sorter(sort_option)
+                    else:
+                        print(f"{darkred(𖦹 _ 𖦹)...\nError: Invalid choice{default}")
+                
+                elif menu2 == '5':
+                    print("Your graph is being plotted ...")
+                    time.sleep(1)
+                    print("")
+                    plot_transactions(stored_user, stored_pass, balance)
+                    
+                        
+                elif menu2 == '6':
+                    print("logging out.")
+                    time.sleep(1)
+                    loading()
+                    print("""
+                    
+                █████████████████████████████████████
+                ███████▀█████████████████████████████
+                ██████░░█████████████████████████████
+                █████▀░▄█████████████████████████████
+                █████░░▀▀▀▀▀███▀▀█████▀▀███▀▀▀▀▀█████
+                █████░░▄██▄░░███░░███░░███░░███░░████
+                ████░░█████░░███░▄███░░██░░▀▀▀░▄█████
+                ████░░████▀░███░░███▀░███░░██████████
+                ████░░█▀▀░▄████▄░▀▀▀░▄███▄░▀▀▀░▄█████
+                █████▄▄▄███████████░░██████▄▄████████
+                ██████████████░▀█▀░▄█████████████████
+                ███████████████▄▄▄███████████████████
+                █████████████████████████████████████                    
+                    
+                    
+                    
+                    
+                   """ )
+                    break
+                else:
+                    print("Invalid choice. Please select a valid option (1/2/3/4/5).")
+```
