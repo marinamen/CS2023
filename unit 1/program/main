@@ -6,12 +6,17 @@ import keyboard
 print("imported keyboard")
 
 
+
+
+
+
+
+
 def menu():
     print("\n ♯ menu ೀ :")
     print("1. Register")
     print("2. Login")
     print("3. Forgot Password")
-    print("4. Sort Transactions")
 
 def loading():
     time.sleep(0.5)
@@ -41,6 +46,31 @@ def show_balance(username):
             if username == stored_user:
                 return float(balance)
     return None
+
+import matplotlib.pyplot as plt
+import datetime
+
+def plot_transactions(stored_user,stored_pass,balance):
+    with open('transactions.txt', 'r') as file:
+        lines = file.readlines()
+    user_transactions = [line.strip().split(',') for line in lines if line.strip().split(',')[0] == username and line.strip().split(',')[1] == password]
+    dates = [datetime.datetime.now()] 
+    balances = [0]
+    for transaction in user_transactions:
+        date_str, _, balance_str = transaction
+        date = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+        balance = int(balance_str)
+        dates.append(date)
+        balances.append(balance)
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(dates, balances, marker='o', linestyle='-', color='b')
+    plt.title(f"{username}'s transaction historyೀ ")
+    plt.xlabel('date')
+    plt.ylabel('balance (SOL amount)')
+    plt.grid(True)
+    plt.show()
+
 
 def deposit(username, amount):
     with open('data.txt', 'r') as datafile:
@@ -122,6 +152,7 @@ def forgot_password():
                 print("Security questions validation failed. Please try again.\n")
     else:
         print("Username not found. Please try again.\n")
+def drawgraph(tr
 
 def pretty_banner(text):
     banner = f'''
@@ -150,31 +181,54 @@ while True:
         if login(username, password):
             while True:
                 print("\nUser Menu:")
-                print("1. Deposit")
-                print("2. Withdraw")
-                print("3. Check Balance")
-                print("4. Sort Transactions")
-                print("5. Logout")
-                inner_choice = input("Select an option (1/2/3/4/5): ")
-                if inner_choice == '1':
+                print("1. Deposit  ✩  ")
+                print("2. Withdraw  ✩ ")
+                print("3. Check Balance  ✩ ")
+                print("4. Sort Transactions  ✩ ")
+                print("5. Graph of Transactions  ✩")
+                print("6. Logout  ✩")
+                menu2 = input("Select an option  ೀ : ")
+                if menu2 == '1':
                     amount = float(input("Enter the deposit amount: "))
                     deposit(username, amount)
-                    print(f"Deposited ${amount}. New balance: ${show_balance(username):.2f}")
-                elif inner_choice == '2':
+                    print(f"Deposited SOL{amount}. New balance: SOL{show_balance(username):.2f}")
+                elif menu2 == '2':
                     amount = float(input("Enter the withdrawal amount: "))
                     if withdraw(username, amount):
-                        print(f"Withdrew ${amount}. New balance: ${show_balance(username):.2f}")
+                        print(f"Withdrew SOL{amount}. New balance: SOL{show_balance(username):.2f}")
                     else:
                         print("Insufficient balance.")
-                elif inner_choice == '3':
+                elif menu2 == '3':
                     balance = show_balance(username)
                     if balance is not None:
-                        print(f"Current balance: ${balance:.2f}")
+                        currency_input=input("Press a key to choose a currency:\nA. Euro [̲̅€̲̅(̲̅20̲̅)̲̅€̲̅]\nB. Dollar[̲̅$(̲̅1)̲̅$]\nC. Pound[̲̅£(̲̅10)̲̅£]\nD. Yen[̲̅¥(̲̅1000̲̅)̲̅¥])
+                        capitalise_cinput=currency_input.upper()
+                        if capitalise_cinput == "A":
+                            beuro=(balance*solana_price)*0.95
+                            print(f"Your currency in SOL is{balance} and its worth{beuro}€")
+                        elif capitalise_cinput == "B":
+                            bdollar=balance*solana_price
+                            print(f"Your currency in SOL is{balance} and its worth${bdollar}")
+                        elif capitalise_cinput == "C":
+                            bpound=(balance*solana_price)*0.82
+                            print(f"Your currency in SOL is{balance} and its worth£{beuro}")
+                        elif capitalise_cinput == "D":
+                            byen=(balance*solana_price)*148
+                            print(f"Your currency in SOL is{balance} and its worth{byen}¥")
+                        else:
+                            loading()
+                            print(f"{darkred(𖦹 _ 𖦹)...\nError: Invalid choice{default}")
+                    
                     else:
                         print("Error retrieving balance.")
-                elif inner_choice == '4':
+
+                elif menu2 == '4':
                     sort_transactions()
-                elif inner_choice == '5':
+                
+                elif menu2 == '5':
+                    plot_transactions(stored_user, stored_pass, balance)
+                        
+                elif menu2 == '6':
                     print("Logging out.")
                     break
                 else:
