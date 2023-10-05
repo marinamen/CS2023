@@ -183,9 +183,11 @@ Sato san requested a register and login feauture, so I delivered using the below
 
 ୨ৎ Functions for both Register and Login.
 
-୨ৎ An option in case the password was forgotten that validates the User's identity through 2 securiy questions.
+୨ৎ An option in case the password was forgotten that validates the User's identity through 2 securiy questions and conditionals.
 
 ୨ৎ Pleasing Visuals to make the System more aesthetic.
+
+୨ৎ Password encrytiption through hashing using pass lib with an algorithm of pbkdf2_sha256, to secure
 
 ୨ৎ Keypress feature , instead of using inputs I imported the keyboard library which inmediately detects keypress to ease the proccess.
 
@@ -193,7 +195,7 @@ To prevent errors in the keypress system I used
 ```.py
 keyboard.read_event(suppress=True)
 ```
-The above function waits for a keypress event and suppresses it to prevent the default behaviour when a key is pressed in other applications or if its used in other moments throughout the program.
+The above function waits for a keypress event and suppresses it to prevent the default behaviour when a key is pressed in other applications or if its used in other moments throughout the program. Why did I use keyboard commands instead of inputs, to make the algorithm more professional and to save time of defining each inputs time, increase functionality in general
 
 I stored all of the users information in a separate csv file called *data.txt*, it stored the data in the format *username, password, security1, security2*. 
 It was read using the open function in three different ways **a** which appends the users data during registration, **r** which reads and authenticates the validity of the username and password, and finally **w** which writes and replaces the old password with the new one in the forgot password function.
@@ -211,10 +213,8 @@ Passlib is better than HMAC for password hashing because it provides a dedicated
 
 
 ```.py
-
-#Login and register function + some used
-
 from passlib.hash import pbkdf2_sha256
+import keyboard
 
 def menu():
     print("\n ♯ menu ೀ :")
@@ -231,6 +231,7 @@ def loading():
 def register(username, password):
     with open('data.txt', 'r') as datafile:
         if username in datafile:
+            return False
          
     hashedpass = encryption.hash(password)
     with open('data.txt', 'a') as datafile:
@@ -306,12 +307,12 @@ def forgot_password():
         loading()
         security1 = input("what year did/will you graduate school in: ")
         security2= input("where were you raised: ")
-        register(username, password, security1, security2)
         loading()
-
-        
-        print("registration successful!\n")
-        print("˖ ࣪‧₊˚⋆✩٩(ˊᗜˋ*)و ✩")
+        if register(username, password, security1, security2):
+            print("registration successful!\n")
+            print("˖ ࣪‧₊˚⋆✩٩(ˊᗜˋ*)و ✩")
+        else:
+            print("registration unsuccessful!, username already in our database, try to log in\n")
 
     elif key == '2':
         username = input("enter your username: ")
