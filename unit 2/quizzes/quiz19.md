@@ -3,36 +3,30 @@
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
  
-19. Create a function that changes the vowels in a string to numbers such as a=4,e=3,i=1,o=0 and space by _
+19. Using the function that produces the table of Truth for 3 inputs, add a column for the boolean equation
+AB+(not B)+not(CB)
+
 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code*
 
-    def get_l3tt3r(input):
-
-    vowelrep = {'a': '4', 'e': '3', 'i': '1', 'o': '0', 'u': '5'}
-    result = ""
-
-    for char in input:
-        if char.lower() in vowelrep:
-            result+=vowelrep[char.lower()]
-        elif char ==' ':
-            result+='_'
-        else:
-            result+=char
-
-    return result
-
-    input="Hello World"
-    output=get_l3tt3r(input)
-    print(output)
-
+    def get_truth2():
+        print("A | B | C | Boolean")
+    
+        input = [0, 1]
+        for a in input:
+            for b in input:
+                for c in input:
+                    boolean = (a and b or (not b)) or not(c and b)
+                    print(f"{a} | {b} | {c} |   {int(boolean)}")
+    
+    get_truth2()
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/Screenshot%202023-10-29%20at%2019.54.00.png)
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/Screenshot%202023-11-09%20at%2000.56.38.png)
 
 #flowchart　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
-![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/quiz017.jpg)
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/quiz019.drawio.png)
