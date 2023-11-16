@@ -3,7 +3,7 @@
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
  
-20. Create a function that changes the vowels in a string to numbers such as a=4,e=3,i=1,o=0 and space by _
+20. Create a program that produces n random values from the equation below, where m and s are the other inputs of the function 
 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
