@@ -31,8 +31,8 @@ AB+(not B)+not(CB)
 
 **X = ZW ⨁ (Z ⨁ Y(not W))**
 
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/19.jpeg" width=50% height=50%>
 
-![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/19.jpeg)
 
  
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
