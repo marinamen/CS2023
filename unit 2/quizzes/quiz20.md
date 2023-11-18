@@ -8,7 +8,7 @@
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code #1*
-
+```.py
 
     import random
     
@@ -28,9 +28,9 @@
     result=produce(n=5,m=3,s=2)
     print(result)
 
-
+```
 *code #2*
-
+```.py
     def produce(n, m, s):
         random.seed(1234)
         return '\n'.join(f"|{x:<6}| {y:.2f}|"
@@ -38,6 +38,18 @@
     
     result = produce(n=5, m=3, s=2)
     print(result)
+```
+
+
+#part b　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+*Proof for :*
+
+**A (A + B) = A**
+
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/20.jpeg" width=50% height=50%>
+
 
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
