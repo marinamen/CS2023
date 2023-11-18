@@ -10,7 +10,7 @@ AB+(not B)+not(CB)
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code*
-
+```.py
     def get_truth2():
         print("A | B | C | Boolean")
     
@@ -22,6 +22,19 @@ AB+(not B)+not(CB)
                     print(f"{a} | {b} | {c} |   {int(boolean)}")
     
     get_truth2()
+```
+
+#part b　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+*b.Truth table and circuit for:*
+
+**X = ZW ⨁ (Z ⨁ Y(not W))**
+
+
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/19.jpeg)
+
+ 
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
