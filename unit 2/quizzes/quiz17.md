@@ -8,7 +8,7 @@
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code*
-
+```.py
     def get_l3tt3r(input):
 
     vowelrep = {'a': '4', 'e': '3', 'i': '1', 'o': '0', 'u': '5'}
@@ -27,6 +27,16 @@
     input="Hello World"
     output=get_l3tt3r(input)
     print(output)
+```
+*part b*　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+*b.Boolean circuit for:*
+
+***AB + not(B+C) + B(notC notA)***
+
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/17.jpeg)
+
 
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
