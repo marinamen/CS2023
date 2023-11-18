@@ -3,35 +3,42 @@
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
  
-22. Create a function that changes the vowels in a string to numbers such as a=4,e=3,i=1,o=0 and space by _
-
+22.  Create a program shows the graph of the parabola for 100 values of x in the interval -10 < x < 10   
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code*
+```.py
+from matplotlib import pyplot as plt
+def produce():
+    x_out=[]
+    y_out=[]
+    for n in range(-10,11):
+        x_out.append(n)
+        yres=2*((n+5)**2)
+        y_out.append(yres)
+    return x_out,y_out
+plt.style.use("ggplot")
+x,y= produce()
+plt.plot(x,y,color="lightpink")
+plt.show()
 
-    def get_l3tt3r(input):
+```
+#part b　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-    vowelrep = {'a': '4', 'e': '3', 'i': '1', 'o': '0', 'u': '5'}
-    result = ""
+*Circuit for:*
 
-    for char in input:
-        if char.lower() in vowelrep:
-            result+=vowelrep[char.lower()]
-        elif char ==' ':
-            result+='_'
-        else:
-            result+=char
+**not(bit0 bit1 + not (bit0 + bit1))**
 
-    return result
 
-    input="Hello World"
-    output=get_l3tt3r(input)
-    print(output)
+<img src="https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/22.jpeg" width=50% height=50%>
+
+
 
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/Screenshot%202023-10-29%20at%2019.54.00.png)
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/Screenshot%202023-11-18%20at%2013.12.34.png)
 
 #flowchart　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
