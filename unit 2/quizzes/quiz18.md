@@ -8,7 +8,7 @@
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 *code*
-
+```.py
      def get_truth():
          print("A | B | C |")
          input = [0, 1]
@@ -18,8 +18,19 @@
                      print(f"{a} | {b} | {c} |")
      
      get_truth()
+```
 
-     
+#part b　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+*b.Truth table and circuit for:*
+
+**Light = S1S2+(S2+S3(notS1))S1**
+
+
+![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/18.jpeg)
+
+
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
